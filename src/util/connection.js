@@ -1,7 +1,8 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/database'
-import { getStorage } from 'firebase/storage';
-import { getAuth } from 'firebase/auth'
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+import 'firebase/firestore';
+import 'firebase/auth'
+
 const firebaseConfig = {
     apiKey: "AIzaSyBS49ZX2JH3o1nzafdz24AGfM5TUcXqEdI",
     authDomain: "dorethy-s-somecrust.firebaseapp.com",
@@ -12,11 +13,14 @@ const firebaseConfig = {
   };
 
   // initialize firebase
-  const app =firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   // connect notes component to the database
-  const databaseRef = firebase.database().ref()
-  export const noteRef = databaseRef.child('notes');
+  //  export const databaseRef = firebase.database().ref()
+  // export const noteRef = databaseRef.child('notes');
   // connect file upload component to the database
-  export const storage_bucket = getStorage(app)
-  export const auth = getAuth(app);
-export default firebase;
+  const projectFirestore = firebase.firestore();
+  const projectStorage = firebase.storage()
+  const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+  const auth = firebase.auth();
+
+export {projectFirestore, projectStorage, timestamp};
