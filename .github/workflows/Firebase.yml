@@ -31,8 +31,8 @@ jobs:
       with:
         name: build
         path: build
-    deploy:
-      name: Deploy
+  deploy:
+    - name: Deploy
       needs: build
       runs-on: windows-latest
     steps:
