@@ -26,11 +26,11 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    -name: Archive Build
+    - name: Archive Build
       uses: actions/upload-artifact@v3
       with:
-      name: build
-      path: build
+        name: build
+        path: build
     deploy:
       name: Deploy
       needs: build
