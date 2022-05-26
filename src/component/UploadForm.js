@@ -19,11 +19,15 @@ const Uploadform = () => {
         }
     }
 
-    return (
-        <form>
-            <input type='file' onChange={ChangeHandler} />
+return (
+    <form>
+        <p>Upload your memories here.</p>
+        <label>
+            <input  type='file' onChange={ChangeHandler} />
+            <span>+</span>
+        </label>
             <div className='output'>
-                {error && <div className='error'> {'error'}</div>}
+                {error && <div className='error'> {error}</div>}
                 { file && <div> {file.name}</div> }
                 { file && <ProgressBar file={file} setFile={setFile} />  }
             </div>

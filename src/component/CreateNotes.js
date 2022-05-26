@@ -1,16 +1,17 @@
 import React, {useState} from 'react'
-import {noteRef} from '../util/connection';
+// import {noteRef} from '../util/connection';
+import {projectFirestore} from "../util/connection"
 
  function CreateNotes() {
  const [note, setNote] = useState('');
 
  const createNote = (e) => {
+     let entry = e.target.value
      e.preventDefault();
-     const item = {
-         task: note,
-         done: false
-     }
-     noteRef.push(item)
+     setNote(entry);
+     
+     const collectionNotes = projectFirestore.collection('notes');
+     collectionNotes.add(note)
      setNote('')
  }
  return(

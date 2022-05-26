@@ -10,7 +10,7 @@ const useStorage = (file) => {
     useEffect(() => {
      // reference to where file should be saved creating a ref inside firebase storage
      const storageRef = projectStorage.ref(file.name) 
-     // uploads file to reference and takes a snapshot of the upload.
+     // uploads file to firestore and takes a snapshot of the upload.
      const collectionRef = projectFirestore.collection('images')
      storageRef.put(file).on( 'state_changed', (snap) => {
     // Track progress
@@ -22,8 +22,10 @@ const useStorage = (file) => {
          const url = await storageRef.getDownloadURL();
          const createdAt = timestamp();
          await collectionRef.add({url, createdAt})
-         setUrl(url);
+         setUrl(url, createdAt);
      })
+     
+     console.log( 'running twice userStorage')
     }, [file]);
 
     return { progress, url, error }

@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/storage';
 import 'firebase/firestore';
 import 'firebase/auth'
@@ -15,8 +15,8 @@ const firebaseConfig = {
   // initialize firebase
   firebase.initializeApp(firebaseConfig);
   // connect notes component to the database
-  //  export const databaseRef = firebase.database().ref()
-  // export const noteRef = databaseRef.child('notes');
+ // const databaseRef = firebase.firestore().ref()
+ // const noteRef = databaseRef.child('notes');
   // connect file upload component to the database
   const projectFirestore = firebase.firestore();
   const projectStorage = firebase.storage()

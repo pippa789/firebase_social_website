@@ -9,7 +9,7 @@ import { projectFirestore } from '../util/connection';
    useEffect(() => {
       const unsub = projectFirestore.collection(collection)
          .orderBy('createdAt', 'desc' )
-         .onSnapshot(snap => {
+         .onSnapshot((snap) => {
             let documents = []
             snap.forEach(doc => {
                 documents.push({...doc.data(), id: doc.id});
@@ -17,8 +17,9 @@ import { projectFirestore } from '../util/connection';
             setDocs(documents);
             
          })
-        return () => unsub();
-     }, [])
+         return() => unsub();         
+     }, [collection])
   return { docs }
+  
 }
 export default UseFirestore
