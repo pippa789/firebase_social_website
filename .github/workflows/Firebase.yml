@@ -46,6 +46,6 @@ jobs:
         uses: v9jds/firebase-action@master
         with:
           args: deploy --only hosting: MY_SITE_NAME
-          env: 
+        env: 
             FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         
