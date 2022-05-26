@@ -43,8 +43,8 @@ jobs:
           name: build
           path: build
         -name: Deploy to Firebase
-          uses: v9jds/firebase-action@master
-          with:
+         uses: v9jds/firebase-action@master
+         with:
             args: deploy --only hosting
           env: 
             FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
